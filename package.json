@@ -1,0 +1,25 @@
+{
+  "name": "battleships",
+  "version": "1.0.0",
+  "description": "A very basic (one sided) implementation of the game Battleships",
+  "main": "index.js",
+  "scripts": {
+    "test": "node ./node_modules/mocha/bin/mocha --reporter list",
+    "start": "node index.js"
+  },
+  "keywords": [
+    "game",
+    "battleships"
+  ],
+  "author": "Javier Alba",
+  "license": "ISC",
+  "dependencies": {
+    "chalk": "^1.1.1",
+    "prompt": "^0.2.14"
+  },
+  "devDependencies": {
+    "chai": "^3.4.1",
+    "mocha": "^2.3.3",
+    "sinon": "^1.17.2"
+  }
+}
