@@ -127,6 +127,13 @@ function getBattleShipFromcoordinate(coordinate) {
     }
 }
 
+function isSunk(battleship) {
+    var result = battleship.reduce(function(prev, current) {
+        return prev + current;
+    });
+    return !isNaN(result);
+}
+
 function shipsLeft() {
     var ships = battleships.battleship.locations[0].concat(battleships.destroyers.locations[0],
                                                         battleships.destroyers.locations[1]);
@@ -139,13 +146,6 @@ function coordinateExist(coordinate) {
 
 function isHit(coordinate) {
     return doesCollide([coordinate]);
-}
-
-function isSunk(battleship) {
-    var result = battleship.reduce(function(prev, current) {
-        return prev + current;
-    });
-    return !isNaN(result);
 }
 
 module.exports = {
