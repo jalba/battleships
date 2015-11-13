@@ -25,7 +25,7 @@ describe('Battleships game', function() {
         var start    = spawn('node', [path.join(__dirname, '/../index.js')]);
         var startData = '';
         var enterCoordinatesStr = 'Enter a coordinate:';
-        called = false;
+        var called = false;
         start.stdout.on('data', function (data) {
             startData += data;
             if(startData.indexOf(enterCoordinatesStr) > -1) {
