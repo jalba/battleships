@@ -4,7 +4,7 @@ var expect = require('chai').expect;
 var asciiArt = require('../asciiArt');
 
 describe('Battleships game', function() {
-	it('Should start and prompt the user to start a new game', function(done) {
+    it('Should start and prompt the user to start a new game', function(done) {
         var spawn = require('child_process').spawn;
         var start    = spawn('node', [__dirname+'/../index.js']);
         var startData = '';
@@ -15,13 +15,13 @@ describe('Battleships game', function() {
            }
         });
         start.stdout.on('end', function() {
-        	expect(startData.indexOf('Battleships')).to.equal(0);
-        	expect(startData.indexOf('Start a new Game? (Y/N)')).to.not.equal(-1);
-        	done();
+            expect(startData.indexOf('Battleships')).to.equal(0);
+            expect(startData.indexOf('Start a new Game? (Y/N)')).to.not.equal(-1);
+            done();
         });
-	});
-	it('should diplay and explanation of the game mechanics on start of the game', function(done) {
-	    var spawn = require('child_process').spawn;
+    });
+    it('should diplay and explanation of the game mechanics on start of the game', function(done) {
+        var spawn = require('child_process').spawn;
         var start    = spawn('node', [__dirname+'/../index.js']);
         var startData = '';
         var enterCoordinatesStr = 'Enter a coordinate:';
@@ -39,5 +39,5 @@ describe('Battleships game', function() {
                 called = true;
             }
         });
-	});
+    });
 });

@@ -19,28 +19,28 @@ function confirmValidator(value) {
 }
 
 var startProps = {
-	properties: {
-		start: {
-			description: green('Start a new Game? ') + red('(Y/N)'),
-			type: 'string',
-			pattern: yesNo,
-			message: confirmError,
-			required: true,
-			before: confirmValidator
-		}
-	}
+    properties: {
+        start: {
+            description: green('Start a new Game? ') + red('(Y/N)'),
+            type: 'string',
+            pattern: yesNo,
+            message: confirmError,
+            required: true,
+            before: confirmValidator
+        }
+    }
 }
 
 var playProps = {
-	properties: {
-		play: {
-			description: green('Enter a coordinate: '),
-			type: 'string',
-			pattern: /^[a-jA-J][0-9]$/,
-			message: 'The coordinates must be in the range [a-j][0-9]',
-			required: true
-		}
-	}
+    properties: {
+        play: {
+            description: green('Enter a coordinate: '),
+            type: 'string',
+            pattern: /^[a-jA-J][0-9]$/,
+            message: 'The coordinates must be in the range [a-j][0-9]',
+            required: true
+        }
+    }
 };
 
 function sigint(err) {
@@ -51,16 +51,15 @@ function gameStart() {
     prompt.get(startProps, function (err, result) {
         sigint(err);
         if(!result.start) {
-    	    console.log('Exiting Battleships...');
-    	    process.exit();
+            console.log('Exiting Battleships...');
+            process.exit();
         } else {
             console.log(green('OK'));
             console.log(green('Based on the following greed, you will need to provide input\n' +
-    	                     'in the format A5 (row/collum) to try to sink the computers Battleships:'));
+                             'in the format A5 (row/collum) to try to sink the computers Battleships:'));
             console.log(asciiArt.grid);
             GameLogic.init(function() {console.log(green('Game Started:'))});
             play();
-            
         }
     });
 }
