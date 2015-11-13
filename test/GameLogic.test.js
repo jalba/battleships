@@ -14,7 +14,7 @@ describe('The GameLogic module', function() {
         console.log.restore();
     });
     it('should expose two methos', function() {
-        methodsArray = Object.keys(GameLogic);
+        var methodsArray = Object.keys(GameLogic);
         expect(methodsArray.length).to.equal(2);
         expect(methodsArray.indexOf('init')).not.to.equal(-1);
         expect(methodsArray.indexOf('fire')).not.to.equal(-1);
