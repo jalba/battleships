@@ -46,7 +46,9 @@ function generateLocation(battleship) {
 function cleanData() {
     if(battleships.battleship.locations[0]) {
         for(var row in grid) {
-            grid[row] = [];
+            if (grid.hasOwnProperty(row)) {
+                grid[row] = [];
+            }
         }
         battleships.battleship.locations = [];
         battleships.destroyers.locations = [];
@@ -55,12 +57,14 @@ function cleanData() {
 
 function doesCollide(location) {
     for(var battleship in battleships) {
-        if(battleships[battleship].locations.some(function(ship) {
-            var collision = location.filter(function(coordinate) {
-                return ship.indexOf(coordinate) !== -1;
-            });
-            return !!collision.length;
-        })) return true;
+        if (battleships.hasOwnProperty(battleships)) {
+            if(battleships[battleship].locations.some(function(ship) {
+                var collision = location.filter(function(coordinate) {
+                    return ship.indexOf(coordinate) !== -1;
+                });
+                return !!collision.length;
+            })) return true;
+        }
     }
     return false;
 }
@@ -118,11 +122,13 @@ function handleHit(battleship, coordinate) {
 function getBattleShipFromcoordinate(coordinate) {
     var battleship;
     for(var ship in battleships) {
-        battleship = battleships[ship].locations.filter(function(location) {
-            return location.indexOf(coordinate) !== -1;
-        })[0];
-        if(battleship && battleship.length > 0) {
-            return battleships[ship].locations[battleships[ship].locations.indexOf(battleship)];
+        if (battleships.hasOwnProperty(ship)) {
+            battleship = battleships[ship].locations.filter(function(location) {
+                return location.indexOf(coordinate) !== -1;
+            })[0];
+            if(battleship && battleship.length > 0) {
+                return battleships[ship].locations[battleships[ship].locations.indexOf(battleship)];
+            }
         }
     }
 }
