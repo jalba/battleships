@@ -28,7 +28,7 @@ function generateLocation(battleship) {
     if(direction === 1) { //vertical
         row = Math.floor(Math.random() * (rows.length - battleships[battleship].size + 1));
         col = Math.floor(Math.random() * rows.length);
-        } else { //horizontal
+    } else { //horizontal
         row = Math.floor(Math.random() * rows.length);
         col = Math.floor(Math.random() * (rows.length - battleships[battleship].size + 1));
     }
