@@ -1,12 +1,12 @@
 var child_process = require('child_process');
 var expect = require('chai').expect;
-
+var path = require('path');
 var asciiArt = require('../asciiArt');
 
 describe('Battleships game', function() {
     it('Should start and prompt the user to start a new game', function(done) {
         var spawn = require('child_process').spawn;
-        var start    = spawn('node', [__dirname+'/../index.js']);
+        var start    = spawn('node', [path.join(__dirname, '/../index.js')]);
         var startData = '';
         start.stdout.on('data', function (data) {
            startData += data;
@@ -22,7 +22,7 @@ describe('Battleships game', function() {
     });
     it('should diplay and explanation of the game mechanics on start of the game', function(done) {
         var spawn = require('child_process').spawn;
-        var start    = spawn('node', [__dirname+'/../index.js']);
+        var start    = spawn('node', [path.join(__dirname, '/../index.js')]);
         var startData = '';
         var enterCoordinatesStr = 'Enter a coordinate:';
         called = false;
