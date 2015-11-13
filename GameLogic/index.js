@@ -95,23 +95,19 @@ function fire(coordinate, finish, next) {
             if(isSunk(ship)) {
                 if(!shipsLeft()) {
                     console.log(chalk.green('Congratulations, You have sunk all the battleships! You Won!!!'));
-                    finish();
-                } else {
-                    console.log(chalk.green('Great, you just sunk a ship!!!!'));
-                    next();
+                    return finish();
                 }
-            } else {
-                console.log(chalk.green('Hit!!'));
-                next();
+                console.log(chalk.green('Great, you just sunk a ship!!!!'));
+                return next();
             }
-        } else {
-            console.log(chalk.green('Miss...'));
-            next();
+            console.log(chalk.green('Hit!!'));
+            return next();
         }
-    } else {
-        console.log(chalk.red('You already fired on that coordinate, pick another one:'));
-        next();
+        console.log(chalk.green('Miss...'));
+        return next();
     }
+    console.log(chalk.red('You already fired on that coordinate, pick another one:'));
+    next();
 }
 
 function handleHit(battleship, coordinate) {
