@@ -53,23 +53,6 @@ function cleanData() {
     }
 }
 
-function init(next) {
-    console.log('generating game grid...');
-    cleanData();
-    battleships.battleship.locations.push(generateLocation('battleship'));
-    var destroyers = battleships.destroyers;
-    var i = 0;
-    var detroyerLocation;
-    for(i; i < 2; i++){
-        destroyerLocation = generateLocation('destroyers');
-        while(doesCollide(destroyerLocation)) {
-            destroyerLocation = generateLocation('destroyers');
-        }
-        destroyers.locations.push(destroyerLocation);
-    }
-    next();
-}
-
 function doesCollide(location) {
     for(var battleship in battleships) {
         if(battleships[battleship].locations.some(function(ship) {
@@ -80,6 +63,23 @@ function doesCollide(location) {
         })) return true;
     }
     return false;
+}
+
+function init(next) {
+    console.log('generating game grid...');
+    cleanData();
+    battleships.battleship.locations.push(generateLocation('battleship'));
+    var destroyers = battleships.destroyers;
+    var i = 0;
+    var detroyerLocation;
+    for(i; i < 2; i++){
+        var destroyerLocation = generateLocation('destroyers');
+        while(doesCollide(destroyerLocation)) {
+            destroyerLocation = generateLocation('destroyers');
+        }
+        destroyers.locations.push(destroyerLocation);
+    }
+    next();
 }
 
 function addcoordinate(coordinate) {
