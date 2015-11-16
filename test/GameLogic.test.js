@@ -23,7 +23,6 @@ describe('The GameLogic module', function() {
         var callback = function() {};
         GameLogic.init(callback);
         var calledArgs = console.log.getCall(0).args[0];
-        console.log(calledArgs);
         var condition = calledArgs.indexOf('generating game grid...') > -1;
         expect(condition).to.equal(true);
     });

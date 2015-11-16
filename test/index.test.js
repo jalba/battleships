@@ -1,4 +1,4 @@
-var child_process = require('child_process');
+
 var expect = require('chai').expect;
 var path = require('path');
 var asciiArt = require('../asciiArt');
